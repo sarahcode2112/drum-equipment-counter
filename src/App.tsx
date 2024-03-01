@@ -52,11 +52,16 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Cymbal Counter</h1>
       <section>
-        <MyButton countDirection={'Up'} equipmentName={'Crash Cymbal'} onClick={()=>{upCrashCymbal()}}></MyButton>
-        <MyButton countDirection={'Down'} equipmentName={'Crash Cymbal'} onClick={()=>{downCrashCymbal()}}></MyButton>
-        <MyButton countDirection={'Up'} equipmentName={'Ride Cymbal'} onClick={() => {upRideCymbal()}}></MyButton>
-        <MyButton countDirection={'Down'} equipmentName={'Ride Cymbal'} onClick={() => {downRideCymbal()}}></MyButton>
+        <div>
+          <MyButton countDirection={'Up'} equipmentName={'Crash Cymbal'} onClick={()=>{upCrashCymbal()}}></MyButton>
+          <MyButton countDirection={'Down'} equipmentName={'Crash Cymbal'} onClick={()=>{downCrashCymbal()}}></MyButton>
+        </div>
+        <div>
+          <MyButton countDirection={'Up'} equipmentName={'Ride Cymbal'} onClick={() => {upRideCymbal()}}></MyButton>
+          <MyButton countDirection={'Down'} equipmentName={'Ride Cymbal'} onClick={() => {downRideCymbal()}}></MyButton>
+        </div>
       </section>
       <section>
         <div>

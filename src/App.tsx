@@ -2,20 +2,28 @@ import React, { ComponentProps } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function MyButton(props: ComponentProps<'button'>){
+function MyButton(props: ComponentProps<'button'> & {countDirection: 'up' | 'down'} & {equipmentName: string}){
+  const { children, equipmentName, countDirection, ...rest } = props
+
   return (
-    <button {...props}>This is my button</button>
+    <button {...rest}>
+      {countDirection} {equipmentName}
+    </button>
   )
 }
 
-function runFunction() { 
-  console.log('function was run')
+function upCrashCymbal() { 
+  console.log('crashCymbalCount')
+}
+
+function downCrashCymbal() {
+  console.log('crashCymbalCount down')
 }
 
 function App() {
   return (
     <div className="App">
-      <MyButton disabled={false} onClick={()=>{runFunction()}}/>
+      <MyButton countDirection={'up'} equipmentName={'Crash Cymbal'} onClick={()=>{upCrashCymbal()}}></MyButton>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

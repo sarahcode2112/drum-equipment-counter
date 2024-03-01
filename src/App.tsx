@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function MyButton(){
+function MyButton(props: ComponentProps<'button'>){
   return (
-    <button>This is my button</button>
+    <button {...props}>This is my button</button>
   )
+}
+
+function runFunction() { 
+  console.log('function was run')
 }
 
 function App() {
   return (
     <div className="App">
-      <MyButton/>
+      <MyButton disabled={false} onClick={()=>{runFunction()}}/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

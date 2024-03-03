@@ -3,7 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 
 type Cymbal = 'rideCymbal' | 'crashCymbal' | 'totalCymbal'
-type CymbalDisplayName = 'Crash Cymbal' | 'Ride Cymbal'
+
+enum CymbalDisplayName {
+  Crash = 'Crash Cymbal',
+  Ride = 'Ride Cymbal',
+  Total = 'Total Cymbal'
+}
+
 type CymbalCounts = {
   crashCymbal: number,
   rideCymbal: number,
@@ -41,23 +47,23 @@ function App() {
       <h1>Cymbal Counter</h1>
       <section>
         <div>
-          <EquipmentCountButton countDirection={'Up'} equipmentName={'Crash Cymbal'} onClick={()=>{countCymbals('crashCymbal', 1)}}></EquipmentCountButton>
-          <EquipmentCountButton countDirection={'Down'} equipmentName={'Crash Cymbal'} onClick={()=>{countCymbals('crashCymbal', -1)}}></EquipmentCountButton>
+          <EquipmentCountButton countDirection={'Up'} equipmentName={CymbalDisplayName.Crash} onClick={()=>{countCymbals('crashCymbal', 1)}}></EquipmentCountButton>
+          <EquipmentCountButton countDirection={'Down'} equipmentName={CymbalDisplayName.Crash} onClick={()=>{countCymbals('crashCymbal', -1)}}></EquipmentCountButton>
         </div>
         <div>
-          <EquipmentCountButton countDirection={'Up'} equipmentName={'Ride Cymbal'} onClick={() => {countCymbals('rideCymbal', 1)}}></EquipmentCountButton>
-          <EquipmentCountButton countDirection={'Down'} equipmentName={'Ride Cymbal'} onClick={() => {countCymbals('rideCymbal', -1)}}></EquipmentCountButton>
+          <EquipmentCountButton countDirection={'Up'} equipmentName={CymbalDisplayName.Ride} onClick={() => {countCymbals('rideCymbal', 1)}}></EquipmentCountButton>
+          <EquipmentCountButton countDirection={'Down'} equipmentName={CymbalDisplayName.Ride} onClick={() => {countCymbals('rideCymbal', -1)}}></EquipmentCountButton>
         </div>
       </section>
       <section>
         <div>
-          Crash Cymbals: {cymbalCounts.crashCymbal}
+          {CymbalDisplayName.Crash}s: {cymbalCounts.crashCymbal}
         </div>
         <div>
-          Ride Cymbals: {cymbalCounts.rideCymbal}
+          {CymbalDisplayName.Ride}s: {cymbalCounts.rideCymbal}
         </div>
         <div>
-          Total Cymbals: {cymbalCounts.totalCymbal}
+          {CymbalDisplayName.Total}s: {cymbalCounts.totalCymbal}
         </div>
       </section>
       <header className="App-header">

@@ -17,7 +17,7 @@ type CymbalCounts = Record<keyof typeof CymbalEnum, number>
 function EquipmentCountButton({equipmentName, countDirection, onClick}: {countDirection: 'Up' | 'Down', equipmentName: CymbalEnum, onClick: () => void}){
   return (
     <button onClick={onClick}>
-      {countDirection} {equipmentName}
+      {(countDirection === 'Up') ? `⬆️ ${equipmentName}` : ` ${equipmentName} ⬇️`} 
     </button>
   )
 }

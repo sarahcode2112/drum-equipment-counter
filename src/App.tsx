@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-type Cymbal = 'rideCymbal' | 'crashCymbal' | 'totalCymbal'
-
-enum CymbalName {
+enum CymbalEnum {
   'crashCymbal' = 'Crash Cymbal',
   'rideCymbal' = 'Ride Cymbal',
   'totalCymbal' = 'Total Cymbal'
 }
 
-type CymbalNameKey = keyof typeof CymbalName
+type CymbalKey = keyof typeof CymbalEnum
 
-type CymbalCounts = Record<keyof typeof CymbalName, number>
+type CymbalCounts = Record<keyof typeof CymbalEnum, number>
 
-function EquipmentCountButton({equipmentName, countDirection, onClick}: {countDirection: 'Up' | 'Down', equipmentName: CymbalName, onClick: () => void}){
+function EquipmentCountButton({equipmentName, countDirection, onClick}: {countDirection: 'Up' | 'Down', equipmentName: CymbalEnum, onClick: () => void}){
   return (
     <button onClick={onClick}>
       {countDirection} {equipmentName}
@@ -22,19 +20,19 @@ function EquipmentCountButton({equipmentName, countDirection, onClick}: {countDi
   )
 }
 
-function EquipmentCountButtons({ countCymbals, equipmentName }: {countCymbals: any, equipmentName: CymbalNameKey}) {
+function EquipmentCountButtons({ countCymbals, equipmentName }: {countCymbals: any, equipmentName: CymbalKey}) {
   return (
     <div>
       <EquipmentCountButton
         countDirection={"Up"}
-        equipmentName={CymbalName[equipmentName]}
+        equipmentName={CymbalEnum[equipmentName]}
         onClick={() => {
           countCymbals(equipmentName, 1);
         }}
       ></EquipmentCountButton>
       <EquipmentCountButton
         countDirection={"Down"}
-        equipmentName={CymbalName[equipmentName]}
+        equipmentName={CymbalEnum[equipmentName]}
         onClick={() => {
           countCymbals(equipmentName, -1);
         }}
@@ -50,7 +48,7 @@ function App() {
       totalCymbal: 0
   })
 
-  function countCymbals(cymbalType: Cymbal, increment: number) {
+  function countCymbals(cymbalType: CymbalKey, increment: number) {
     if (cymbalCounts[cymbalType] + increment >= 0) {
       setCymbalCounts(prevCounts => (
         {
@@ -70,13 +68,13 @@ function App() {
       </section>
       <section>
         <div>
-          {CymbalName.crashCymbal}s: {cymbalCounts.crashCymbal}
+          {CymbalEnum.crashCymbal}s: {cymbalCounts.crashCymbal}
         </div>
         <div>
-          {CymbalName.rideCymbal}s: {cymbalCounts.rideCymbal}
+          {CymbalEnum.rideCymbal}s: {cymbalCounts.rideCymbal}
         </div>
         <div>
-          {CymbalName.totalCymbal}s: {cymbalCounts.totalCymbal}
+          {CymbalEnum.totalCymbal}s: {cymbalCounts.totalCymbal}
         </div>
       </section>
       <header className="App-header">

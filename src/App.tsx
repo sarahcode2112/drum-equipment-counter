@@ -5,6 +5,8 @@ import './App.css';
 enum CymbalEnum {
   'crashCymbal' = 'Crash Cymbal',
   'rideCymbal' = 'Ride Cymbal',
+  'splashCymbal' = 'Splash Cymbal',
+  'chinaCymbal' = 'China Cymbal',
   'totalCymbal' = 'Total Cymbal'
 }
 
@@ -45,6 +47,8 @@ function App() {
   const [cymbalCounts, setCymbalCounts] = useState<CymbalCounts>({
       crashCymbal: 0,
       rideCymbal: 0,
+      splashCymbal: 0,
+      chinaCymbal: 0,
       totalCymbal: 0
   })
 

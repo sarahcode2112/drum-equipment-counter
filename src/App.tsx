@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-enum CymbalEnum {
-  'crashCymbal' = 'Crash Cymbal',
-  'rideCymbal' = 'Ride Cymbal',
-  'splashCymbal' = 'Splash Cymbal',
-  'chinaCymbal' = 'China Cymbal',
-  'totalCymbal' = 'Total Cymbal'
-}
-
-type CymbalEnumKey = keyof typeof CymbalEnum
-
-type CymbalCounts = Record<keyof typeof CymbalEnum, number>
+import { CymbalEnum, CymbalEnumKey, CymbalCounts } from './types';
 
 function EquipmentCountButton({equipmentName, countDirection, onClick}: {countDirection: 'Up' | 'Down', equipmentName: CymbalEnum, onClick: () => void}){
   return (

@@ -28,7 +28,7 @@ function App() {
       <header>
         <h1>Cymbal Counter</h1>
       </header>
-      <section>
+      <section className="equipmentCountButtonsContainer">
         {Object.keys(CymbalEnum).map((key) => {
           if ( key !== 'totalCymbal') {
             return(
@@ -40,7 +40,7 @@ function App() {
       <section>
         {Object.entries(CymbalEnum).map(([key, value]) => {
           return (
-            <div>
+            <div className="equipmentCountDisplay">
               {value}s: {cymbalCounts[key as CymbalEnumKey]}
             </div>
           )

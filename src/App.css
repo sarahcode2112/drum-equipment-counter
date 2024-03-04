@@ -1,3 +1,24 @@
-.App {
+html, body {
   text-align: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to bottom left, rgb(125, 148, 211), rgb(132, 20, 132));
+  background-attachment: fixed;
+}
+
+.equipmentCountButtonsContainer {
+  margin-bottom: 15px
+}
+
+.equipmentCountDisplay {
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.equipmentCountButtonsRow {
+  margin: 3px;
 }

@@ -10,7 +10,7 @@ function EquipmentCountButton({ equipmentName, countDirection, onClick }: { coun
 
 export function EquipmentCountButtons({ countCymbals, equipmentName }: { countCymbals: any; equipmentName: CymbalEnumKey; }) {
   return (
-    <div>
+    <div className="equipmentCountButtonsRow">
       <EquipmentCountButton
         countDirection={"Up"}
         equipmentName={CymbalEnum[equipmentName]}

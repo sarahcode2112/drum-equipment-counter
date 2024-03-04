@@ -8,7 +8,7 @@ enum CymbalEnum {
   'totalCymbal' = 'Total Cymbal'
 }
 
-type CymbalKey = keyof typeof CymbalEnum
+type CymbalEnumKey = keyof typeof CymbalEnum
 
 type CymbalCounts = Record<keyof typeof CymbalEnum, number>
 
@@ -20,7 +20,7 @@ function EquipmentCountButton({equipmentName, countDirection, onClick}: {countDi
   )
 }
 
-function EquipmentCountButtons({ countCymbals, equipmentName }: {countCymbals: any, equipmentName: CymbalKey}) {
+function EquipmentCountButtons({ countCymbals, equipmentName }: {countCymbals: any, equipmentName: CymbalEnumKey}) {
   return (
     <div>
       <EquipmentCountButton
@@ -48,7 +48,7 @@ function App() {
       totalCymbal: 0
   })
 
-  function countCymbals(cymbalType: CymbalKey, increment: number) {
+  function countCymbals(cymbalType: CymbalEnumKey, increment: number) {
     if (cymbalCounts[cymbalType] + increment >= 0) {
       setCymbalCounts(prevCounts => (
         {
@@ -70,7 +70,7 @@ function App() {
         {Object.entries(CymbalEnum).map(([key, value]) => {
           return (
             <div>
-              {value}s: {cymbalCounts[key as CymbalKey]}
+              {value}s: {cymbalCounts[key as CymbalEnumKey]}
             </div>
           )
         })}

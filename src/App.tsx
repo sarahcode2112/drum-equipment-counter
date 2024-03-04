@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import { CymbalEnum, CymbalEnumKey, CymbalCounts } from './types';
-import { EquipmentCountButtons } from './EquipmentCountButtons';
+import { CymbalEnum, CymbalEnumKey, CymbalCounts } from './types/types';
+import { EquipmentCountButtons } from './components/EquipmentCountButtons/EquipmentCountButtons';
 
 function App() {
   const [cymbalCounts, setCymbalCounts] = useState<CymbalCounts>({

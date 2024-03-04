@@ -5,10 +5,12 @@ import './App.css';
 type Cymbal = 'rideCymbal' | 'crashCymbal' | 'totalCymbal'
 
 enum CymbalDisplayName {
-  Crash = 'Crash Cymbal',
-  Ride = 'Ride Cymbal',
-  Total = 'Total Cymbal'
+  'crashCymbal' = 'Crash Cymbal',
+  'rideCymbal' = 'Ride Cymbal',
+  'totalCymbal' = 'Total Cymbal'
 }
+
+type CymbalDisplayNameKey = keyof typeof CymbalDisplayName
 
 type CymbalCounts = {
   crashCymbal: number,
@@ -22,6 +24,27 @@ function EquipmentCountButton({equipmentName, countDirection, onClick}: {countDi
       {countDirection} {equipmentName}
     </button>
   )
+}
+
+function EquipmentCountButtons({ countCymbals, equipmentName }: {countCymbals: any, equipmentName: CymbalDisplayNameKey}) {
+  return (
+    <div>
+      <EquipmentCountButton
+        countDirection={"Up"}
+        equipmentName={CymbalDisplayName[equipmentName]}
+        onClick={() => {
+          countCymbals(equipmentName, 1);
+        }}
+      ></EquipmentCountButton>
+      <EquipmentCountButton
+        countDirection={"Down"}
+        equipmentName={CymbalDisplayName[equipmentName]}
+        onClick={() => {
+          countCymbals(equipmentName, -1);
+        }}
+      ></EquipmentCountButton>
+    </div>
+  );
 }
 
 function App() {
@@ -46,24 +69,18 @@ function App() {
     <div className="App">
       <h1>Cymbal Counter</h1>
       <section>
-        <div>
-          <EquipmentCountButton countDirection={'Up'} equipmentName={CymbalDisplayName.Crash} onClick={()=>{countCymbals('crashCymbal', 1)}}></EquipmentCountButton>
-          <EquipmentCountButton countDirection={'Down'} equipmentName={CymbalDisplayName.Crash} onClick={()=>{countCymbals('crashCymbal', -1)}}></EquipmentCountButton>
-        </div>
-        <div>
-          <EquipmentCountButton countDirection={'Up'} equipmentName={CymbalDisplayName.Ride} onClick={() => {countCymbals('rideCymbal', 1)}}></EquipmentCountButton>
-          <EquipmentCountButton countDirection={'Down'} equipmentName={CymbalDisplayName.Ride} onClick={() => {countCymbals('rideCymbal', -1)}}></EquipmentCountButton>
-        </div>
+        <EquipmentCountButtons countCymbals={countCymbals} equipmentName={'crashCymbal'}  />
+        <EquipmentCountButtons countCymbals={countCymbals} equipmentName={'rideCymbal'} />
       </section>
       <section>
         <div>
-          {CymbalDisplayName.Crash}s: {cymbalCounts.crashCymbal}
+          {CymbalDisplayName.crashCymbal}s: {cymbalCounts.crashCymbal}
         </div>
         <div>
-          {CymbalDisplayName.Ride}s: {cymbalCounts.rideCymbal}
+          {CymbalDisplayName.rideCymbal}s: {cymbalCounts.rideCymbal}
         </div>
         <div>
-          {CymbalDisplayName.Total}s: {cymbalCounts.totalCymbal}
+          {CymbalDisplayName.totalCymbal}s: {cymbalCounts.totalCymbal}
         </div>
       </section>
       <header className="App-header">
@@ -85,3 +102,5 @@ function App() {
 }
 
 export default App;
+    
+  

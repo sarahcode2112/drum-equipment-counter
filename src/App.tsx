@@ -67,15 +67,13 @@ function App() {
         <EquipmentCountButtons countCymbals={countCymbals} equipmentName={'rideCymbal'} />
       </section>
       <section>
-        <div>
-          {CymbalEnum.crashCymbal}s: {cymbalCounts.crashCymbal}
-        </div>
-        <div>
-          {CymbalEnum.rideCymbal}s: {cymbalCounts.rideCymbal}
-        </div>
-        <div>
-          {CymbalEnum.totalCymbal}s: {cymbalCounts.totalCymbal}
-        </div>
+        {Object.entries(CymbalEnum).map(([key, value]) => {
+          return (
+            <div>
+              {value}s: {cymbalCounts[key as CymbalKey]}
+            </div>
+          )
+        })}
       </section>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

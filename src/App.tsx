@@ -63,8 +63,13 @@ function App() {
     <div className="App">
       <h1>Cymbal Counter</h1>
       <section>
-        <EquipmentCountButtons countCymbals={countCymbals} equipmentName={'crashCymbal'}  />
-        <EquipmentCountButtons countCymbals={countCymbals} equipmentName={'rideCymbal'} />
+        {Object.keys(CymbalEnum).map((key) => {
+          if ( key !== 'totalCymbal') {
+            return(
+              <EquipmentCountButtons countCymbals={countCymbals} equipmentName={key as CymbalEnumKey}/>
+            )
+          }
+        })}
       </section>
       <section>
         {Object.entries(CymbalEnum).map(([key, value]) => {

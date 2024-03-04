@@ -37,14 +37,19 @@ function App() {
           }
         })}
       </section>
-      <section>
+      <section className="equipmentCountContainer">
         {Object.entries(CymbalEnum).map(([key, value]) => {
-          return (
-            <div className="equipmentCountDisplay">
-              {value}s: {cymbalCounts[key as CymbalEnumKey]}
-            </div>
-          )
+          if (key !== 'totalCymbal') {
+            return (
+              <div className="equipmentCountRow">
+                {value}s: {cymbalCounts[key as CymbalEnumKey]}
+              </div>
+            )
+          }
         })}
+        <div className="totalCymbalCountRow">
+          {CymbalEnum.totalCymbal}s: {cymbalCounts['totalCymbal']}
+        </div>
       </section>
     </div>
   );

@@ -1,4 +1,5 @@
 import { CymbalEnum, CymbalEnumKey } from '../../types/types';
+import './EquipmentCountButtons.css'
 
 function EquipmentCountButton({ equipmentName, countDirection, onClick }: { countDirection: 'Up' | 'Down'; equipmentName: CymbalEnum; onClick: () => void; }) {
   return (

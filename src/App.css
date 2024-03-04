@@ -10,15 +10,15 @@ body {
   background-attachment: fixed;
 }
 
-.equipmentCountButtonsContainer {
-  margin-bottom: 15px
-}
-
-.equipmentCountDisplay {
-  margin-bottom: 5px;
+.equipmentCountContainer {
   font-size: 17px;
 }
 
-.equipmentCountButtonsRow {
-  margin: 3px;
+.equipmentCountRow {
+  margin: 5px
+}
+
+.totalCymbalCountRow {
+  margin-top: 14px;
+  font-size: 20px;
 }

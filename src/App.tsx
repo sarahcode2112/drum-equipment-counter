@@ -12,6 +12,8 @@ function App() {
       totalCymbal: 0
   })
 
+  const [newCymbal, setNewCymbal] = useState<string>('')
+
   function countCymbals(cymbalType: CymbalEnumKey, increment: number) {
     if (cymbalCounts[cymbalType] + increment >= 0) {
       setCymbalCounts(prevCounts => (
@@ -23,11 +25,32 @@ function App() {
     }
   }
 
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setNewCymbal(event.target.value)
+  }
+
+  function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setCymbalCounts(prevCount => ({
+      ...prevCount,
+      [newCymbal]: 0
+    }))
+    setNewCymbal('')
+  }
+
   return (
     <div className="App">
       <header>
         <h1>Cymbal Counter</h1>
       </header>
+      <section className="newCymbalForm">
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={handleChange} placeholder="New Cymbal"></input>
+          <button type="submit">
+            Submit
+          </button>
+        </form>
+      </section>
       <section className="equipmentCountButtonsContainer">
         {Object.keys(CymbalEnum).map((key) => {
           if ( key !== 'totalCymbal') {

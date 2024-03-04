@@ -1,4 +1,3 @@
-import React from 'react';
 import { CymbalEnum, CymbalEnumKey } from './types';
 
 function EquipmentCountButton({ equipmentName, countDirection, onClick }: { countDirection: 'Up' | 'Down'; equipmentName: CymbalEnum; onClick: () => void; }) {
@@ -8,6 +7,7 @@ function EquipmentCountButton({ equipmentName, countDirection, onClick }: { coun
     </button>
   );
 }
+
 export function EquipmentCountButtons({ countCymbals, equipmentName }: { countCymbals: any; equipmentName: CymbalEnumKey; }) {
   return (
     <div>

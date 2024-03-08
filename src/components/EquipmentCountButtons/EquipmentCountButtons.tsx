@@ -1,7 +1,7 @@
-import { CymbalEnum, CymbalEnumKey } from '../../types/types';
+import { CymbalCounts, CymbalCountsKey } from '../../types/types';
 import './EquipmentCountButtons.css'
 
-function EquipmentCountButton({ equipmentName, countDirection, onClick }: { countDirection: 'Up' | 'Down'; equipmentName: CymbalEnum; onClick: () => void; }) {
+function EquipmentCountButton({ equipmentName, countDirection, onClick }: { countDirection: 'Up' | 'Down'; equipmentName: CymbalCountsKey; onClick: () => void; }) {
   return (
     <button onClick={onClick}>
       {(countDirection === 'Up') ? `⬆️ ${equipmentName}` : ` ${equipmentName} ⬇️`}
@@ -9,19 +9,19 @@ function EquipmentCountButton({ equipmentName, countDirection, onClick }: { coun
   );
 }
 
-export function EquipmentCountButtons({ countCymbals, equipmentName }: { countCymbals: any; equipmentName: CymbalEnumKey; }) {
+export function EquipmentCountButtons({ countCymbals, equipmentName }: { countCymbals: any; equipmentName: CymbalCountsKey; }) {
   return (
     <div className="equipmentCountButtonsRow">
       <EquipmentCountButton
         countDirection={"Up"}
-        equipmentName={CymbalEnum[equipmentName]}
+        equipmentName={equipmentName}
         onClick={() => {
           countCymbals(equipmentName, 1);
         }}
       ></EquipmentCountButton>
       <EquipmentCountButton
         countDirection={"Down"}
-        equipmentName={CymbalEnum[equipmentName]}
+        equipmentName={equipmentName}
         onClick={() => {
           countCymbals(equipmentName, -1);
         }}

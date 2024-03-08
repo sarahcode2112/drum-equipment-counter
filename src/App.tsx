@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import './App.css';
-import { CymbalEnum, CymbalEnumKey, CymbalCounts } from './types/types';
+import { CymbalCounts, CymbalCountsKey } from './types/types';
 import { EquipmentCountButtons } from './components/EquipmentCountButtons/EquipmentCountButtons';
 
 function App() {
   const [cymbalCounts, setCymbalCounts] = useState<CymbalCounts>({
-      crashCymbal: 0,
-      rideCymbal: 0,
-      splashCymbal: 0,
-      chinaCymbal: 0,
+      'Crash Cymbals': 0,
+      'Ride Cymbals': 0,
+      'Splash Cymbals': 0,
+      'China Cymbals': 0,
   })
 
   const totalCymbal = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue)
-  console.log(totalCymbal)
 
   const [newCymbal, setNewCymbal] = useState<string>('')
 
-  function countCymbals(cymbalType: CymbalEnumKey, increment: number) {
+  function countCymbals(cymbalType: CymbalCountsKey, increment: number) {
     if (cymbalCounts[cymbalType] + increment >= 0) {
       setCymbalCounts(prevCounts => (
         {
@@ -53,17 +52,17 @@ function App() {
         </form>
       </section>
       <section className="equipmentCountButtonsContainer">
-        {Object.keys(CymbalEnum).map((key) => {
+        {Object.keys(cymbalCounts).map((key) => {
           return(
-            <EquipmentCountButtons countCymbals={countCymbals} equipmentName={key as CymbalEnumKey}/>
+            <EquipmentCountButtons countCymbals={countCymbals} equipmentName={key as CymbalCountsKey} key={key}/>
           )
         })}
       </section>
       <section className="equipmentCountContainer">
-        {Object.entries(CymbalEnum).map(([key, value]) => {
+        {Object.entries(cymbalCounts).map(([key, value]) => {
           return (
-            <div className="equipmentCountRow">
-              {value}s: {cymbalCounts[key as CymbalEnumKey]}
+            <div className="equipmentCountRow" key={key}>
+              {key}: {cymbalCounts[key as CymbalCountsKey]}
             </div>
           )
         })}
@@ -76,5 +75,3 @@ function App() {
 }
 
 export default App;
-    
-  

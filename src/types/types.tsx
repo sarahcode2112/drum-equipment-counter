@@ -1,14 +1,15 @@
-export enum CymbalEnum {
-  'crashCymbal' = 'Crash Cymbal',
-  'rideCymbal' = 'Ride Cymbal',
-  'splashCymbal' = 'Splash Cymbal',
-  'chinaCymbal' = 'China Cymbal',
+type CymbalCountBase = {
+  'Crash Cymbals': number,
+  'Ride Cymbals': number,
+  'Splash Cymbals': number,
+  'China Cymbals': number,
 }
 
-export type CymbalEnumKey = keyof typeof CymbalEnum;
-
 export type CymbalCounts = {
-  [Key in keyof typeof CymbalEnum]: number;
+  [Key in keyof CymbalCountBase]: number;
 } & {
   [key: string]: number;
 };
+
+export type CymbalCountsKey = 
+  keyof CymbalCountBase | string

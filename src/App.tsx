@@ -69,9 +69,14 @@ function App() {
       </section>
       <section className="equipmentCountDisplayContainer">
         {Object.entries(cymbalCounts).map(([key, value]) => {
+          const emoji = key.toLowerCase().includes("drum")
+            ? "drum emoji "
+            : key.toLowerCase().includes("cymbal")
+            ? "cymbal emoji "
+            : "";
           return (
             <div className="equipmentCountRow" key={key}>
-              {key}: {cymbalCounts[key as CymbalCountsKey] + ' '} 
+              {emoji + key}: {cymbalCounts[key as CymbalCountsKey] + ' '} 
               
               <button className="delete" onClick={() => {deleteCymbals(key)}}>Delete</button>
             </div>

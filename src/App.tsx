@@ -73,7 +73,7 @@ function App() {
             <div className="equipmentCountRow" key={key}>
               {key}: {cymbalCounts[key as CymbalCountsKey] + ' '} 
               
-              <button onClick={() => {deleteCymbals(key)}}>Delete</button>
+              <button className="delete" onClick={() => {deleteCymbals(key)}}>Delete</button>
             </div>
           )
         })}

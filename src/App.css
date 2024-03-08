@@ -15,6 +15,10 @@ button {
   background-color: rgb(141, 184, 222);
 }
 
+.delete {
+  background-color: rgb(234, 112, 137);
+}
+
 .newCymbalForm {
   margin-bottom: 10px;
 }

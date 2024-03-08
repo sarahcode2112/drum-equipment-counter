@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { CymbalCounts, CymbalCountsKey } from './types/types';
 import { EquipmentCountButtons } from './components/EquipmentCountButtons/EquipmentCountButtons';
 
 function App() {
-  const [cymbalCounts, setCymbalCounts] = useState<CymbalCounts>({
+  const [cymbalCounts, setCymbalCounts] = useState<CymbalCounts>(() => {
+    const storedCymbalCounts = localStorage.getItem('cymbalCounts')
+    return storedCymbalCounts ? JSON.parse(storedCymbalCounts) : {
       'Crash Cymbals': 0,
       'Ride Cymbals': 0,
       'Splash Cymbals': 0,
       'China Cymbals': 0,
       'Snare Drums': 0,
       'Kick Drums': 0,
+    }
   })
+
+  useEffect(() => {
+    localStorage.setItem('cymbalCounts', JSON.stringify(cymbalCounts))
+  }, [cymbalCounts])
 
   const totalEquipment = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)
 

@@ -9,9 +9,11 @@ function App() {
       'Ride Cymbals': 0,
       'Splash Cymbals': 0,
       'China Cymbals': 0,
+      'Snare Drum': 0,
+      'Kick Drum': 0,
   })
 
-  const totalCymbal = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)
+  const totalEquipment = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)
 
   const [newCymbal, setNewCymbal] = useState<string>('')
 
@@ -48,11 +50,11 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Cymbal Counter</h1>
+        <h1>Drumset Equipment Counter</h1>
       </header>
       <section className="newCymbalForm">
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleChange} placeholder="New Cymbal"></input>
+          <input type="text" onChange={handleChange} placeholder="New Equipment"></input>
           <button type="submit">
             Submit
           </button>
@@ -76,7 +78,7 @@ function App() {
           )
         })}
         <div className="totalCymbalCountRow">
-          Total Cymbals: {totalCymbal}
+          Total Equipment: {totalEquipment}
         </div>
       </section>
     </div>

@@ -32,6 +32,11 @@ button {
 }
 
 .totalCymbalCountRow {
-  margin-top: 14px;
+  margin: 25px;
   font-size: 20px;
+  font-weight: bold
+}
+
+.resetButton {
+  margin: 15px
 }

@@ -54,6 +54,17 @@ function App() {
     setNewCymbal('')
   }
 
+  const resetCounts = () => {
+    setCymbalCounts({
+      'Crash Cymbals': 0,
+      'Ride Cymbals': 0,
+      'Splash Cymbals': 0,
+      'China Cymbals': 0,
+      'Snare Drums': 0,
+      'Kick Drums': 0,
+    })
+  }
+
   return (
     <div className="App">
       <header>
@@ -94,6 +105,9 @@ function App() {
         <div className="totalCymbalCountRow">
           Total Equipment: {totalEquipment}
         </div>
+        <button onClick={resetCounts} className="resetButton">
+          Reset Everything
+        </button>
       </section>
     </div>
   );

@@ -12,6 +12,9 @@ function App() {
       totalCymbal: 0
   })
 
+  const totalCymbal = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue)
+  console.log(totalCymbal)
+
   const [newCymbal, setNewCymbal] = useState<string>('')
 
   function countCymbals(cymbalType: CymbalEnumKey, increment: number) {

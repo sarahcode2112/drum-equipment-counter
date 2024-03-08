@@ -56,7 +56,7 @@ function App() {
         <form onSubmit={handleSubmit}>
           <input type="text" onChange={handleChange} placeholder="New Equipment"></input>
           <button type="submit">
-            Submit
+            Add
           </button>
         </form>
       </section>

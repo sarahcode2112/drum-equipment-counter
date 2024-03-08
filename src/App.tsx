@@ -69,7 +69,7 @@ function App() {
         {Object.entries(cymbalCounts).map(([key, value]) => {
           return (
             <div className="equipmentCountRow" key={key}>
-              {key}: {cymbalCounts[key as CymbalCountsKey]} 
+              {key}: {cymbalCounts[key as CymbalCountsKey] + ' '} 
               
               <button onClick={() => {deleteCymbals(key)}}>Delete</button>
             </div>

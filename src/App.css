@@ -10,6 +10,11 @@ body {
   background-attachment: fixed;
 }
 
+button {
+  border-radius: 7px;
+  background-color: rgb(141, 184, 222);
+}
+
 .newCymbalForm {
   margin-bottom: 10px;
 }

@@ -9,8 +9,8 @@ function App() {
       'Ride Cymbals': 0,
       'Splash Cymbals': 0,
       'China Cymbals': 0,
-      'Snare Drum': 0,
-      'Kick Drum': 0,
+      'Snare Drums': 0,
+      'Kick Drums': 0,
   })
 
   const totalEquipment = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)

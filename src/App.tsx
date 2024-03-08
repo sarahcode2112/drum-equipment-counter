@@ -67,7 +67,7 @@ function App() {
           )
         })}
       </section>
-      <section className="equipmentCountContainer">
+      <section className="equipmentCountDisplayContainer">
         {Object.entries(cymbalCounts).map(([key, value]) => {
           return (
             <div className="equipmentCountRow" key={key}>

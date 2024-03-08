@@ -70,9 +70,9 @@ function App() {
       <section className="equipmentCountDisplayContainer">
         {Object.entries(cymbalCounts).map(([key, value]) => {
           const emoji = key.toLowerCase().includes("drum")
-            ? "drum emoji "
+            ? "🥁 "
             : key.toLowerCase().includes("cymbal")
-            ? "cymbal emoji "
+            ? "🛎 "
             : "";
           return (
             <div className="equipmentCountRow" key={key}>

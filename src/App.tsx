@@ -11,7 +11,7 @@ function App() {
       'China Cymbals': 0,
   })
 
-  const totalCymbal = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue)
+  const totalCymbal = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)
 
   const [newCymbal, setNewCymbal] = useState<string>('')
 
@@ -23,6 +23,13 @@ function App() {
         [cymbalType]: prevCounts[cymbalType] + increment,
       }))
     }
+  }
+
+  function deleteCymbals(cymbalType: CymbalCountsKey) {
+    setCymbalCounts(prevCymbals => {
+      const { [cymbalType]: deletedCymbal, ...restCymbals } = prevCymbals;
+      return restCymbals
+    })
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -62,7 +69,9 @@ function App() {
         {Object.entries(cymbalCounts).map(([key, value]) => {
           return (
             <div className="equipmentCountRow" key={key}>
-              {key}: {cymbalCounts[key as CymbalCountsKey]}
+              {key}: {cymbalCounts[key as CymbalCountsKey]} 
+              
+              <button onClick={() => {deleteCymbals(key)}}>Delete</button>
             </div>
           )
         })}

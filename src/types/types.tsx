@@ -1,3 +1,4 @@
+// this first type is probably unecessary now
 type CymbalCountBase = {
   'Crash Cymbals': number,
   'Ride Cymbals': number,
@@ -6,8 +7,6 @@ type CymbalCountBase = {
 }
 
 export type CymbalCounts = {
-  [Key in keyof CymbalCountBase]: number;
-} & {
   [key: string]: number;
 };
 

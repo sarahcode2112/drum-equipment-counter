@@ -9,7 +9,6 @@ function App() {
       rideCymbal: 0,
       splashCymbal: 0,
       chinaCymbal: 0,
-      totalCymbal: 0
   })
 
   const totalCymbal = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue)
@@ -23,7 +22,6 @@ function App() {
         {
         ...prevCounts,
         [cymbalType]: prevCounts[cymbalType] + increment,
-        totalCymbal: prevCounts.totalCymbal + increment
       }))
     }
   }
@@ -56,25 +54,21 @@ function App() {
       </section>
       <section className="equipmentCountButtonsContainer">
         {Object.keys(CymbalEnum).map((key) => {
-          if ( key !== 'totalCymbal') {
-            return(
-              <EquipmentCountButtons countCymbals={countCymbals} equipmentName={key as CymbalEnumKey}/>
-            )
-          }
+          return(
+            <EquipmentCountButtons countCymbals={countCymbals} equipmentName={key as CymbalEnumKey}/>
+          )
         })}
       </section>
       <section className="equipmentCountContainer">
         {Object.entries(CymbalEnum).map(([key, value]) => {
-          if (key !== 'totalCymbal') {
-            return (
-              <div className="equipmentCountRow">
-                {value}s: {cymbalCounts[key as CymbalEnumKey]}
-              </div>
-            )
-          }
+          return (
+            <div className="equipmentCountRow">
+              {value}s: {cymbalCounts[key as CymbalEnumKey]}
+            </div>
+          )
         })}
         <div className="totalCymbalCountRow">
-          {CymbalEnum.totalCymbal}s: {cymbalCounts['totalCymbal']}
+          Total Cymbals: {totalCymbal}
         </div>
       </section>
     </div>

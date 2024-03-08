@@ -3,7 +3,6 @@ export enum CymbalEnum {
   'rideCymbal' = 'Ride Cymbal',
   'splashCymbal' = 'Splash Cymbal',
   'chinaCymbal' = 'China Cymbal',
-  'totalCymbal' = 'Total Cymbal'
 }
 export type CymbalEnumKey = keyof typeof CymbalEnum;
 export type CymbalCounts = Record<keyof typeof CymbalEnum, number>;

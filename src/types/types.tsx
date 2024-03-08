@@ -4,5 +4,11 @@ export enum CymbalEnum {
   'splashCymbal' = 'Splash Cymbal',
   'chinaCymbal' = 'China Cymbal',
 }
+
 export type CymbalEnumKey = keyof typeof CymbalEnum;
-export type CymbalCounts = Record<keyof typeof CymbalEnum, number>;
+
+export type CymbalCounts = {
+  [Key in keyof typeof CymbalEnum]: number;
+} & {
+  [key: string]: number;
+};

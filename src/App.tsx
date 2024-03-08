@@ -73,6 +73,8 @@ function App() {
             ? "🥁 "
             : key.toLowerCase().includes("cymbal")
             ? "🛎 "
+            : key.toLowerCase().includes("guitar")
+            ? "🎸 "
             : "";
           return (
             <div className="equipmentCountRow" key={key}>

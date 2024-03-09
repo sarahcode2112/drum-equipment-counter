@@ -84,7 +84,7 @@ function App() {
             value={newEquipment}
             onChange={handleChange}
             placeholder="New Equipment"
-          ></input>
+          />
           <button type="submit">Add</button>
         </form>
       </section>

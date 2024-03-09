@@ -1,15 +1,29 @@
-import { EquipmentCountsKey } from '../../types/types';
-import './EquipmentCountButtons.css'
+import { EquipmentCountsKey } from "../../types/types";
+import "./EquipmentCountButtons.css";
 
-function EquipmentCountButton({ equipmentName, countDirection, onClick }: { countDirection: 'Up' | 'Down'; equipmentName: EquipmentCountsKey; onClick: () => void; }) {
+function EquipmentCountButton({
+  equipmentName,
+  countDirection,
+  onClick,
+}: {
+  countDirection: "Up" | "Down";
+  equipmentName: EquipmentCountsKey;
+  onClick: () => void;
+}) {
   return (
     <button onClick={onClick}>
-      {(countDirection === 'Up') ? `⬆️ ${equipmentName}` : ` ${equipmentName} ⬇️`}
+      {countDirection === "Up" ? `⬆️ ${equipmentName}` : ` ${equipmentName} ⬇️`}
     </button>
   );
 }
 
-export function EquipmentCountButtons({ countEquipment, equipmentName }: { countEquipment: any; equipmentName: EquipmentCountsKey; }) {
+export function EquipmentCountButtons({
+  countEquipment,
+  equipmentName,
+}: {
+  countEquipment: any;
+  equipmentName: EquipmentCountsKey;
+}) {
   return (
     <div className="equipmentCountButtonsRow">
       <EquipmentCountButton

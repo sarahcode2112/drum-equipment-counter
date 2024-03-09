@@ -1,69 +1,79 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import { EquipmentCounts, EquipmentCountsKey } from './types/types';
-import { EquipmentCountButtons } from './components/EquipmentCountButtons/EquipmentCountButtons';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { EquipmentCounts, EquipmentCountsKey } from "./types/types";
+import { EquipmentCountButtons } from "./components/EquipmentCountButtons/EquipmentCountButtons";
 
 function App() {
-  const [equipmentCounts, setEquipmentCounts] = useState<EquipmentCounts>(() => {
-    const storedEquipmentCounts = localStorage.getItem('equipmentCounts')
-    return storedEquipmentCounts ? JSON.parse(storedEquipmentCounts) : {
-      'Crash Cymbals': 0,
-      'Ride Cymbals': 0,
-      'Splash Cymbals': 0,
-      'China Cymbals': 0,
-      'Snare Drums': 0,
-      'Kick Drums': 0,
+  const [equipmentCounts, setEquipmentCounts] = useState<EquipmentCounts>(
+    () => {
+      const storedEquipmentCounts = localStorage.getItem("equipmentCounts");
+      return storedEquipmentCounts
+        ? JSON.parse(storedEquipmentCounts)
+        : {
+            "Crash Cymbals": 0,
+            "Ride Cymbals": 0,
+            "Splash Cymbals": 0,
+            "China Cymbals": 0,
+            "Snare Drums": 0,
+            "Kick Drums": 0,
+          };
     }
-  })
+  );
 
   useEffect(() => {
-    localStorage.setItem('equipmentCounts', JSON.stringify(equipmentCounts))
-  }, [equipmentCounts])
+    localStorage.setItem("equipmentCounts", JSON.stringify(equipmentCounts));
+  }, [equipmentCounts]);
 
-  const totalEquipment = Object.values(equipmentCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)
+  const totalEquipment = Object.values(equipmentCounts).reduce(
+    (accumulator, initialValue) => accumulator + initialValue,
+    0
+  );
 
-  const [newEquipment, setNewEquipment] = useState<string>('')
+  const [newEquipment, setNewEquipment] = useState<string>("");
 
-  function countEquipment(equipmentType: EquipmentCountsKey, increment: number) {
+  function countEquipment(
+    equipmentType: EquipmentCountsKey,
+    increment: number
+  ) {
     if (equipmentCounts[equipmentType] + increment >= 0) {
-      setEquipmentCounts(prevCounts => (
-        {
+      setEquipmentCounts((prevCounts) => ({
         ...prevCounts,
         [equipmentType]: prevCounts[equipmentType] + increment,
-      }))
+      }));
     }
   }
 
   function deleteEquipment(equipmentType: EquipmentCountsKey) {
-    setEquipmentCounts(prevEquipment => {
-      const { [equipmentType]: deletedEquipment, ...restEquipment } = prevEquipment;
+    setEquipmentCounts((prevEquipment) => {
+      const { [equipmentType]: deletedEquipment, ...restEquipment } =
+        prevEquipment;
       return restEquipment;
-    })
+    });
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewEquipment(event.target.value)
+    setNewEquipment(event.target.value);
   }
 
   function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setEquipmentCounts(prevCount => ({
+    event.preventDefault();
+    setEquipmentCounts((prevCount) => ({
       ...prevCount,
-      [newEquipment]: 0
-    }))
-    setNewEquipment('')
+      [newEquipment]: 0,
+    }));
+    setNewEquipment("");
   }
 
   const resetCounts = () => {
     setEquipmentCounts({
-      'Crash Cymbals': 0,
-      'Ride Cymbals': 0,
-      'Splash Cymbals': 0,
-      'China Cymbals': 0,
-      'Snare Drums': 0,
-      'Kick Drums': 0,
-    })
-  }
+      "Crash Cymbals": 0,
+      "Ride Cymbals": 0,
+      "Splash Cymbals": 0,
+      "China Cymbals": 0,
+      "Snare Drums": 0,
+      "Kick Drums": 0,
+    });
+  };
 
   return (
     <div className="App">
@@ -72,17 +82,23 @@ function App() {
       </header>
       <section className="newEquipmentForm">
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleChange} placeholder="New Equipment"></input>
-          <button type="submit">
-            Add
-          </button>
+          <input
+            type="text"
+            onChange={handleChange}
+            placeholder="New Equipment"
+          ></input>
+          <button type="submit">Add</button>
         </form>
       </section>
       <section className="equipmentCountButtonsContainer">
         {Object.keys(equipmentCounts).map((key) => {
-          return(
-            <EquipmentCountButtons countEquipment={countEquipment} equipmentName={key as EquipmentCountsKey} key={key}/>
-          )
+          return (
+            <EquipmentCountButtons
+              countEquipment={countEquipment}
+              equipmentName={key as EquipmentCountsKey}
+              key={key}
+            />
+          );
         })}
       </section>
       <section className="equipmentCountDisplayContainer">
@@ -96,11 +112,17 @@ function App() {
             : "";
           return (
             <div className="equipmentCountRow" key={key}>
-              {emoji + key}: {equipmentCounts[key as EquipmentCountsKey] + ' '} 
-              
-              <button className="delete" onClick={() => {deleteEquipment(key)}}>Delete</button>
+              {emoji + key}: {equipmentCounts[key as EquipmentCountsKey] + " "}
+              <button
+                className="delete"
+                onClick={() => {
+                  deleteEquipment(key);
+                }}
+              >
+                Delete
+              </button>
             </div>
-          )
+          );
         })}
         <div className="totalEquipmentCountRow">
           Total Equipment: {totalEquipment}

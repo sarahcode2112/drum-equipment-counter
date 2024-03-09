@@ -81,6 +81,7 @@ function App() {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
+            value={newEquipment}
             onChange={handleChange}
             placeholder="New Equipment"
           ></input>

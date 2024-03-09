@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { CymbalCounts, CymbalCountsKey } from './types/types';
+import { EquipmentCounts, EquipmentCountsKey } from './types/types';
 import { EquipmentCountButtons } from './components/EquipmentCountButtons/EquipmentCountButtons';
 
 function App() {
-  const [cymbalCounts, setCymbalCounts] = useState<CymbalCounts>(() => {
-    const storedCymbalCounts = localStorage.getItem('cymbalCounts')
-    return storedCymbalCounts ? JSON.parse(storedCymbalCounts) : {
+  const [equipmentCounts, setEquipmentCounts] = useState<EquipmentCounts>(() => {
+    const storedEquipmentCounts = localStorage.getItem('equipmentCounts')
+    return storedEquipmentCounts ? JSON.parse(storedEquipmentCounts) : {
       'Crash Cymbals': 0,
       'Ride Cymbals': 0,
       'Splash Cymbals': 0,
@@ -17,45 +17,45 @@ function App() {
   })
 
   useEffect(() => {
-    localStorage.setItem('cymbalCounts', JSON.stringify(cymbalCounts))
-  }, [cymbalCounts])
+    localStorage.setItem('equipmentCounts', JSON.stringify(equipmentCounts))
+  }, [equipmentCounts])
 
-  const totalEquipment = Object.values(cymbalCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)
+  const totalEquipment = Object.values(equipmentCounts).reduce((accumulator, initialValue) => accumulator + initialValue, 0)
 
-  const [newCymbal, setNewCymbal] = useState<string>('')
+  const [newEquipment, setNewEquipment] = useState<string>('')
 
-  function countCymbals(cymbalType: CymbalCountsKey, increment: number) {
-    if (cymbalCounts[cymbalType] + increment >= 0) {
-      setCymbalCounts(prevCounts => (
+  function countEquipment(equipmentType: EquipmentCountsKey, increment: number) {
+    if (equipmentCounts[equipmentType] + increment >= 0) {
+      setEquipmentCounts(prevCounts => (
         {
         ...prevCounts,
-        [cymbalType]: prevCounts[cymbalType] + increment,
+        [equipmentType]: prevCounts[equipmentType] + increment,
       }))
     }
   }
 
-  function deleteCymbals(cymbalType: CymbalCountsKey) {
-    setCymbalCounts(prevCymbals => {
-      const { [cymbalType]: deletedCymbal, ...restCymbals } = prevCymbals;
-      return restCymbals
+  function deleteEquipment(equipmentType: EquipmentCountsKey) {
+    setEquipmentCounts(prevEquipment => {
+      const { [equipmentType]: deletedEquipment, ...restEquipment } = prevEquipment;
+      return restEquipment;
     })
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewCymbal(event.target.value)
+    setNewEquipment(event.target.value)
   }
 
   function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
-    setCymbalCounts(prevCount => ({
+    setEquipmentCounts(prevCount => ({
       ...prevCount,
-      [newCymbal]: 0
+      [newEquipment]: 0
     }))
-    setNewCymbal('')
+    setNewEquipment('')
   }
 
   const resetCounts = () => {
-    setCymbalCounts({
+    setEquipmentCounts({
       'Crash Cymbals': 0,
       'Ride Cymbals': 0,
       'Splash Cymbals': 0,
@@ -70,7 +70,7 @@ function App() {
       <header>
         <h1>Drumset Equipment Counter</h1>
       </header>
-      <section className="newCymbalForm">
+      <section className="newEquipmentForm">
         <form onSubmit={handleSubmit}>
           <input type="text" onChange={handleChange} placeholder="New Equipment"></input>
           <button type="submit">
@@ -79,14 +79,14 @@ function App() {
         </form>
       </section>
       <section className="equipmentCountButtonsContainer">
-        {Object.keys(cymbalCounts).map((key) => {
+        {Object.keys(equipmentCounts).map((key) => {
           return(
-            <EquipmentCountButtons countCymbals={countCymbals} equipmentName={key as CymbalCountsKey} key={key}/>
+            <EquipmentCountButtons countEquipment={countEquipment} equipmentName={key as EquipmentCountsKey} key={key}/>
           )
         })}
       </section>
       <section className="equipmentCountDisplayContainer">
-        {Object.entries(cymbalCounts).map(([key, value]) => {
+        {Object.entries(equipmentCounts).map(([key, value]) => {
           const emoji = key.toLowerCase().includes("drum")
             ? "🥁 "
             : key.toLowerCase().includes("cymbal")
@@ -96,13 +96,13 @@ function App() {
             : "";
           return (
             <div className="equipmentCountRow" key={key}>
-              {emoji + key}: {cymbalCounts[key as CymbalCountsKey] + ' '} 
+              {emoji + key}: {equipmentCounts[key as EquipmentCountsKey] + ' '} 
               
-              <button className="delete" onClick={() => {deleteCymbals(key)}}>Delete</button>
+              <button className="delete" onClick={() => {deleteEquipment(key)}}>Delete</button>
             </div>
           )
         })}
-        <div className="totalCymbalCountRow">
+        <div className="totalEquipmentCountRow">
           Total Equipment: {totalEquipment}
         </div>
         <button onClick={resetCounts} className="resetButton">

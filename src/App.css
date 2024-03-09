@@ -19,7 +19,7 @@ button {
   background-color: rgb(234, 112, 137);
 }
 
-.newCymbalForm {
+.newEquipmentForm {
   margin-bottom: 10px;
 }
 
@@ -31,7 +31,7 @@ button {
   margin: 7px
 }
 
-.totalCymbalCountRow {
+.totalEquipmentCountRow {
   margin: 25px;
   font-size: 20px;
   font-weight: bold

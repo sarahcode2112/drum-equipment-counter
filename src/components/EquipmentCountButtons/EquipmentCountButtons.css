@@ -3,9 +3,10 @@
 }
 
 .equipmentCountButtonsRow {
-  margin: 8px;
+  margin: 18px;
 }
 
 .equipmentCountButton {
-  margin: 0px 4px
+  padding: 5px;
+  margin: 0px 8px
 }

@@ -46,4 +46,7 @@ button {
 
 .resetButton {
   margin: 15px;
+  padding: 4px;
+  color: white;
+  background-color: rgb(85, 7, 85);
 }

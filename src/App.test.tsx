@@ -33,3 +33,19 @@ test('ride cymbal count stays at zero, after ride down button clicked, when ride
   const rideCountZeroElement = screen.getByText(/Ride Cymbals: 0/i);
   expect(rideCountZeroElement).toBeInTheDocument()
 })
+
+test('Reset button resets displayed counts to zero', () => {
+  render(<App />);
+  const snareUpButton = screen.getByText(`⬆️ Snare Drums`)
+  const chinaUpButton = screen.getByText(`⬆️ China Cymbals`)
+  const resetButton = screen.getByText(`Reset Everything`)
+  fireEvent.click(snareUpButton)
+  fireEvent.click(chinaUpButton)
+  fireEvent.click(resetButton)
+  const snareZeroElement = screen.getByText(/Snare Drums: 0/i)
+  const chinaZeroElement = screen.getByText(/China Cymbals: 0/i)
+  const totalCountZeroElement = screen.getByText(/Total Equipment: 0/i)
+  expect(snareZeroElement).toBeInTheDocument()
+  expect(chinaZeroElement).toBeInTheDocument()
+  expect(totalCountZeroElement).toBeInTheDocument()
+})

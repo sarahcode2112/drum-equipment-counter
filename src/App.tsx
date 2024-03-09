@@ -4,19 +4,21 @@ import { EquipmentCounts, EquipmentCountsKey } from "./types/types";
 import { EquipmentCountButtons } from "./components/EquipmentCountButtons/EquipmentCountButtons";
 
 function App() {
+  const defaultEquipmentCounts: EquipmentCounts = {
+    "Crash Cymbals": 0,
+    "Ride Cymbals": 0,
+    "Splash Cymbals": 0,
+    "China Cymbals": 0,
+    "Snare Drums": 0,
+    "Kick Drums": 0,
+  }
+
   const [equipmentCounts, setEquipmentCounts] = useState<EquipmentCounts>(
     () => {
       const storedEquipmentCounts = localStorage.getItem("equipmentCounts");
       return storedEquipmentCounts
         ? JSON.parse(storedEquipmentCounts)
-        : {
-            "Crash Cymbals": 0,
-            "Ride Cymbals": 0,
-            "Splash Cymbals": 0,
-            "China Cymbals": 0,
-            "Snare Drums": 0,
-            "Kick Drums": 0,
-          };
+        : defaultEquipmentCounts;
     }
   );
 
@@ -65,14 +67,7 @@ function App() {
   }
 
   const resetCounts = () => {
-    setEquipmentCounts({
-      "Crash Cymbals": 0,
-      "Ride Cymbals": 0,
-      "Splash Cymbals": 0,
-      "China Cymbals": 0,
-      "Snare Drums": 0,
-      "Kick Drums": 0,
-    });
+    setEquipmentCounts(defaultEquipmentCounts);
   };
 
   return (

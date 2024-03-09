@@ -1,7 +1,7 @@
 import { EquipmentCountsKey } from "../../types/types";
 import "./EquipmentCountButtons.css";
 
-function EquipmentCountButton({
+export const EquipmentCountButton = ({
   equipmentName,
   countDirection,
   onClick,
@@ -9,7 +9,7 @@ function EquipmentCountButton({
   countDirection: "Up" | "Down";
   equipmentName: EquipmentCountsKey;
   onClick: () => void;
-}) {
+}) => {
   return (
     <button onClick={onClick} className="equipmentCountButton">
       {countDirection === "Up" ? `⬆️ ${equipmentName}` : ` ${equipmentName} ⬇️`}
@@ -17,13 +17,13 @@ function EquipmentCountButton({
   );
 }
 
-export function EquipmentCountButtons({
+export const EquipmentCountButtons = ({
   countEquipment,
   equipmentName,
 }: {
   countEquipment: any;
   equipmentName: EquipmentCountsKey;
-}) {
+}) => {
   return (
     <div className="equipmentCountButtonsRow">
       <EquipmentCountButton

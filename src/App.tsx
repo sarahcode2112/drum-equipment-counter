@@ -3,7 +3,7 @@ import "./App.css";
 import { EquipmentCounts, EquipmentCountsKey } from "./types/types";
 import { EquipmentCountButtons } from "./components/EquipmentCountButtons/EquipmentCountButtons";
 
-function App() {
+const App = () => {
   const defaultEquipmentCounts: EquipmentCounts = {
     "Crash Cymbals": 0,
     "Ride Cymbals": 0,
@@ -33,10 +33,10 @@ function App() {
 
   const [newEquipment, setNewEquipment] = useState<string>("");
 
-  function countEquipment(
+  const countEquipment = (
     equipmentType: EquipmentCountsKey,
     increment: number
-  ) {
+  ) => {
     if (equipmentCounts[equipmentType] + increment >= 0) {
       setEquipmentCounts((prevCounts) => ({
         ...prevCounts,
@@ -45,7 +45,7 @@ function App() {
     }
   }
 
-  function deleteEquipment(equipmentType: EquipmentCountsKey) {
+  const deleteEquipment = (equipmentType: EquipmentCountsKey) => {
     setEquipmentCounts((prevEquipment) => {
       const { [equipmentType]: deletedEquipment, ...restEquipment } =
         prevEquipment;
@@ -53,11 +53,11 @@ function App() {
     });
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewEquipment(event.target.value);
   }
 
-  function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
+  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (newEquipment.trim() !== '') {
       setEquipmentCounts((prevCount) => ({

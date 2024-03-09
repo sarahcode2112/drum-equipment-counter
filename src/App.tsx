@@ -59,11 +59,13 @@ function App() {
 
   function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
-    setEquipmentCounts((prevCount) => ({
-      ...prevCount,
-      [newEquipment]: 0,
-    }));
-    setNewEquipment("");
+    if (newEquipment.trim() !== '') {
+      setEquipmentCounts((prevCount) => ({
+        ...prevCount,
+        [newEquipment]: 0,
+      }));
+      setNewEquipment("");
+    }
   }
 
   const resetCounts = () => {

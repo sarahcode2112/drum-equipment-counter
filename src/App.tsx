@@ -45,7 +45,7 @@ const App = () => {
 
   const deleteEquipment = (equipmentType: EquipmentCountsKey) => {
     setEquipmentCounts((prevEquipment) => {
-      const { [equipmentType]: deletedEquipment, ...restEquipment } =
+      const { [equipmentType]: _, ...restEquipment } =
         prevEquipment;
       return restEquipment;
     });

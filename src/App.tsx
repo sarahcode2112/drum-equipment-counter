@@ -31,8 +31,6 @@ const App = () => {
     0
   );
 
-  const [newEquipment, setNewEquipment] = useState<string>("");
-
   const countEquipment = (
     equipmentType: EquipmentCountsKey,
     increment: number
@@ -52,6 +50,8 @@ const App = () => {
       return restEquipment;
     });
   }
+
+  const [newEquipment, setNewEquipment] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewEquipment(event.target.value);

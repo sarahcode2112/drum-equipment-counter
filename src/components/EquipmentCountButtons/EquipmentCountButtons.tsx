@@ -11,7 +11,7 @@ function EquipmentCountButton({
   onClick: () => void;
 }) {
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} className="equipmentCountButton">
       {countDirection === "Up" ? `⬆️ ${equipmentName}` : ` ${equipmentName} ⬇️`}
     </button>
   );

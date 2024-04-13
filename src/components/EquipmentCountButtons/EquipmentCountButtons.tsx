@@ -21,7 +21,7 @@ export const EquipmentCountButtons = ({
   countEquipment,
   equipmentName,
 }: {
-  countEquipment: any;
+  countEquipment: any; // TODO: replace this with corect type
   equipmentName: EquipmentCountsKey;
 }) => {
   return (
